@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Heading, Grommet } from "grommet";
 import AppBar from "../components/AppBar";
 import MovieSearchCard from "../components/MovieSearchCard";
+import MovieCarousel from "../components/MovieCarousel";
 
 const theme = {
   global: {
@@ -17,20 +18,16 @@ const theme = {
 };
 
 const Home = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
   return (
     <Grommet theme={theme} full>
-      <Box fill>
+      <Box fill responsive justify="start">
         <AppBar>
           <Heading level="3" margin="none">
             streamStack
           </Heading>
         </AppBar>
-        <Box direction="row">
-          <Box flex align="center" justify="center">
-            <MovieSearchCard />
-          </Box>
-        </Box>
+        <MovieSearchCard />
+        <MovieCarousel />
       </Box>
     </Grommet>
   );
