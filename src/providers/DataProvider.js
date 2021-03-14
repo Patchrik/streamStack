@@ -4,6 +4,7 @@ export const DataContext = createContext();
 
 export const DataProvider = (props) => {
   const [searchTerm, setSearchTerm] = useState(null);
+  const [searchResultsCount, setSearchResultsCount] = useState(0);
   const [movies, setMovies] = useState([]);
   const [movieDetails, setMovieDetails] = useState(null);
 
@@ -54,10 +55,31 @@ export const DataProvider = (props) => {
     Response: "True",
   };
 
-  const getSearchResults = () => {
-    const MDBkey = process.env.REACT_APP_MOVIE_DB_KEY;
+  const getSearchFakeResults = () => {
     setMovies(fakeMovieSearch.Search);
-    console.log(MDBkey);
+  };
+
+  const getSearchResults = async (queryTerm) => {
+    const MDBkey = process.env.REACT_APP_MOVIE_DB_KEY;
+
+    const response = await fetch(
+      `https://movie-database-imdb-alternative.p.rapidapi.com/?s=${queryTerm}&r=json`,
+      {
+        method: "GET",
+        headers: {
+          "x-rapidapi-key": MDBkey,
+          "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
+        },
+      }
+    );
+    if (!response.ok) {
+      const message = `An error has occurred: ${response.status}`;
+      throw new Error(message);
+    }
+    const data = await response.json();
+
+    setMovies(data.Search);
+    setSearchResultsCount(data.totalResults);
   };
 
   return (
@@ -67,9 +89,11 @@ export const DataProvider = (props) => {
         setMovies,
         searchTerm,
         setSearchTerm,
+        searchResultsCount,
         movieDetails,
         setMovieDetails,
         getSearchResults,
+        getSearchFakeResults,
       }}
     >
       {props.children}
