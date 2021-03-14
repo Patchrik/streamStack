@@ -55,7 +55,9 @@ export const DataProvider = (props) => {
   };
 
   const getSearchResults = () => {
+    const MDBkey = process.env.REACT_APP_MOVIE_DB_KEY;
     setMovies(fakeMovieSearch.Search);
+    console.log(MDBkey);
   };
 
   return (
