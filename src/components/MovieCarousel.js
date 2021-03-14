@@ -1,30 +1,52 @@
-import {
-  Box,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Carousel,
-  Image,
-} from "grommet";
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import { Card, CardBody, CardFooter, CardHeader, Image } from "grommet";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { DataContext } from "../providers/DataProvider";
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 
 const MovieCarousel = () => {
+  const { getSearchResults, movies } = useContext(DataContext);
+  useEffect(() => {
+    getSearchResults();
+  }, []);
   return (
-    <Box align="center" justify="center">
-      <Carousel>
-        <Card width="medium" height="large" margin="small">
-          <CardHeader>Title: I'm Movie</CardHeader>
+    <Carousel responsive={responsive}>
+      {movies.map((movie) => (
+        <Card
+          key={movie.imdbID}
+          width="medium"
+          height="large"
+          margin="small"
+          pad="small"
+        >
+          <CardHeader>{movie.Title}</CardHeader>
           <CardBody>
-            <Image
-              fit="cover"
-              src="https://imgc.allpostersimages.com/img/print/u-g-F9JL6E0.jpg?w=900&h=900&p=0"
-            />
+            <Image fit="cover" src={movie.Poster} />
           </CardBody>
-          <CardFooter>Click me for more deets</CardFooter>
+          <CardFooter>Released: {movie.Year}</CardFooter>
         </Card>
-      </Carousel>
-    </Box>
+      ))}
+    </Carousel>
   );
 };
 
