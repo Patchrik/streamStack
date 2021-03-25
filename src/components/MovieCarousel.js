@@ -1,5 +1,5 @@
-import React, { useEffect, useContext } from "react";
-import { Box, Card, CardBody, CardFooter, CardHeader, Image } from "grommet";
+import React, { useContext } from "react";
+import { Card, CardBody, CardFooter, CardHeader, Image } from "grommet";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { DataContext } from "../providers/DataProvider";
@@ -25,15 +25,8 @@ const responsive = {
 };
 
 const MovieCarousel = () => {
-  const {
-    getSearchResults,
-    getSearchFakeResults,
-    movies,
-    searchResultsCount,
-  } = useContext(DataContext);
-  useEffect(() => {
-    getSearchFakeResults();
-  }, []);
+  const { movies } = useContext(DataContext);
+
   return (
     <Carousel responsive={responsive}>
       {movies.map((movie) => (

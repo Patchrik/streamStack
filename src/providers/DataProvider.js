@@ -1,12 +1,13 @@
 import React, { createContext, useState } from "react";
 
+// @ts-ignore this is throwing an error for really no good reason. We're using context as a global store right now.
 export const DataContext = createContext();
 
 export const DataProvider = (props) => {
-  const [searchTerm, setSearchTerm] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
   const [searchResultsCount, setSearchResultsCount] = useState(0);
   const [movies, setMovies] = useState([]);
-  const [movieDetails, setMovieDetails] = useState(null);
+  const [movieDetails, setMovieDetails] = useState({});
 
   const fakeMovieSearch = {
     Search: [
@@ -77,7 +78,7 @@ export const DataProvider = (props) => {
       throw new Error(message);
     }
     const data = await response.json();
-
+    console.log(data);
     setMovies(data.Search);
     setSearchResultsCount(data.totalResults);
   };
