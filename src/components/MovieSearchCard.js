@@ -1,3 +1,4 @@
+import "./MovieSearchCard.css";
 import { Box, Card, Form, FormField, TextInput } from "grommet";
 import { FormSearch } from "grommet-icons";
 import React, { useContext, useEffect, useState } from "react";
@@ -41,6 +42,7 @@ const MovieSearchCard = () => {
         margin="small"
         align="center"
         justify="center"
+        background="brand"
       >
         <Box width="75%">
           <Form
@@ -50,6 +52,7 @@ const MovieSearchCard = () => {
           >
             <FormField name="search" htmlFor="search-text-field">
               <TextInput
+                className="TextInput"
                 id="search-text-field"
                 name="search"
                 placeholder="Search Movie Title"

@@ -78,9 +78,13 @@ export const DataProvider = (props) => {
       throw new Error(message);
     }
     const data = await response.json();
-    console.log(data);
-    setMovies(data.Search);
-    setSearchResultsCount(data.totalResults);
+    if (!data.Search) {
+      setMovies([]);
+      console.log(`${queryTerm} didn't return any results`);
+    } else {
+      setMovies(data.Search);
+      setSearchResultsCount(data.totalResults);
+    }
   };
 
   return (

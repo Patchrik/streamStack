@@ -1,0 +1,7 @@
+.TextInput {
+  color: #d8d4f2 !important;
+}
+
+::placeholder {
+  color: #d8d4f2 !important;
+}

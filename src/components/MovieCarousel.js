@@ -36,6 +36,7 @@ const MovieCarousel = () => {
           height="large"
           margin="small"
           pad="small"
+          color="brand"
         >
           <CardHeader>{movie.Title}</CardHeader>
           <CardBody>
