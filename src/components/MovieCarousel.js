@@ -32,11 +32,11 @@ const MovieCarousel = () => {
       {movies.map((movie) => (
         <Card
           key={movie.imdbID}
-          width="medium"
+          width="large"
           height="large"
           margin="small"
           pad="small"
-          color="brand"
+          background="shadows"
         >
           <CardHeader>{movie.Title}</CardHeader>
           <CardBody>
