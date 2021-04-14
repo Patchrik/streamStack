@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Card, CardBody, CardFooter, CardHeader, Image } from "grommet";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -24,23 +24,30 @@ const responsive = {
   },
 };
 
+const handleClick = (movie) => {
+  console.log(`what's up you click ${movie.Title}, good choice`);
+};
+
 const MovieCarousel = () => {
-  const { getSearchResults, movies } = useContext(DataContext);
-  useEffect(() => {
-    getSearchResults();
-  }, []);
+  const { movies } = useContext(DataContext);
+
   return (
     <Carousel responsive={responsive}>
       {movies.map((movie) => (
         <Card
           key={movie.imdbID}
-          width="medium"
+          width="large"
           height="large"
           margin="small"
           pad="small"
+          background="shadows"
         >
           <CardHeader>{movie.Title}</CardHeader>
-          <CardBody>
+          <CardBody
+            onClick={() => {
+              handleClick(movie);
+            }}
+          >
             <Image fit="cover" src={movie.Poster} />
           </CardBody>
           <CardFooter>Released: {movie.Year}</CardFooter>

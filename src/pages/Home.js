@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import "./Home.css";
+import React from "react";
 import { Box, Heading, Grommet } from "grommet";
 import AppBar from "../components/AppBar";
 import MovieSearchCard from "../components/MovieSearchCard";
@@ -7,7 +8,13 @@ import MovieCarousel from "../components/MovieCarousel";
 const theme = {
   global: {
     colors: {
-      brand: "#228BE6",
+      brand: "#4c061d",
+      languid: "#d8d4f2",
+      shadows: "#c4b2bc",
+      grullo: "#a29587",
+      bistre: "#846c5b",
+      font: "#0a0908",
+      white: "#a9927d",
     },
     font: {
       family: "Roboto",
@@ -20,9 +27,9 @@ const theme = {
 const Home = () => {
   return (
     <Grommet theme={theme} full>
-      <Box fill responsive justify="start">
+      <Box fill responsive justify="start" background="languid">
         <AppBar>
-          <Heading level="3" margin="none">
+          <Heading level="3" margin="none" color="languid">
             streamStack
           </Heading>
         </AppBar>
