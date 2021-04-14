@@ -24,6 +24,10 @@ const responsive = {
   },
 };
 
+const handleClick = (movie) => {
+  console.log(`what's up you click ${movie.Title}, good choice`);
+};
+
 const MovieCarousel = () => {
   const { movies } = useContext(DataContext);
 
@@ -39,7 +43,11 @@ const MovieCarousel = () => {
           background="shadows"
         >
           <CardHeader>{movie.Title}</CardHeader>
-          <CardBody>
+          <CardBody
+            onClick={() => {
+              handleClick(movie);
+            }}
+          >
             <Image fit="cover" src={movie.Poster} />
           </CardBody>
           <CardFooter>Released: {movie.Year}</CardFooter>
