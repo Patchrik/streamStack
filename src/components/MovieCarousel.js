@@ -24,12 +24,13 @@ const responsive = {
   },
 };
 
-const handleClick = (movie) => {
-  console.log(`what's up you click ${movie.Title}, good choice`);
-};
-
 const MovieCarousel = () => {
-  const { movies } = useContext(DataContext);
+  const { movies, setMovieDetails, movieDetails } = useContext(DataContext);
+
+  const handleClick = (movie) => {
+    console.log(`what's up you click ${movie.Title}, good choice`);
+    setMovieDetails(movie);
+  };
 
   return (
     <Carousel responsive={responsive}>

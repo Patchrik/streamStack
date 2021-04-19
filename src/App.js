@@ -1,12 +1,15 @@
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
 import { DataProvider } from "./providers/DataProvider";
+import ApplicationViews from "./components/ApplicationViews";
 
 function App() {
   return (
-    <DataProvider>
-      <Home />
-    </DataProvider>
+    <Router>
+      <DataProvider>
+        <ApplicationViews />
+      </DataProvider>
+    </Router>
   );
 }
 
