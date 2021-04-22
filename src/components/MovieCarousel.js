@@ -29,7 +29,7 @@ const responsive = {
 };
 
 const MovieCarousel = () => {
-  const { movies, setMovieDetails, movieDetails } = useContext(DataContext);
+  const { movies, setMovieDetails } = useContext(DataContext);
 
   const handleClick = (movie) => {
     console.log(`what's up you click ${movie.Title}, good choice`);

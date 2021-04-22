@@ -1,7 +1,6 @@
 import './Home.css';
 import React from 'react';
-import { Box, Heading, Grommet } from 'grommet';
-import AppBar from '../components/AppBar';
+import { Box, Grommet } from 'grommet';
 import MovieSearchCard from '../components/MovieSearchCard';
 import MovieCarousel from '../components/MovieCarousel';
 
