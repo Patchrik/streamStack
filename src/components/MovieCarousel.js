@@ -1,21 +1,25 @@
-import React, { useContext } from "react";
-import { Card, CardBody, CardFooter, CardHeader, Image } from "grommet";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { DataContext } from "../providers/DataProvider";
+import React, { useContext } from 'react';
+import { Card, CardBody, CardFooter, CardHeader, Image } from 'grommet';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import { DataContext } from '../providers/DataProvider';
 
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
-    items: 5,
+    items: 7,
+  },
+  desktop2K: {
+    breakpoint: { max: 3000, min: 2000 },
+    items: 6,
   },
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
+    breakpoint: { max: 2000, min: 1080 },
+    items: 4,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1080, min: 464 },
     items: 2,
   },
   mobile: {
@@ -37,7 +41,7 @@ const MovieCarousel = () => {
       {movies.map((movie) => (
         <Card
           key={movie.imdbID}
-          width="large"
+          width="medium"
           height="large"
           margin="small"
           pad="small"
@@ -49,7 +53,7 @@ const MovieCarousel = () => {
               handleClick(movie);
             }}
           >
-            <Image fit="cover" src={movie.Poster} />
+            <Image fit="contain" src={movie.Poster} />
           </CardBody>
           <CardFooter>Released: {movie.Year}</CardFooter>
         </Card>

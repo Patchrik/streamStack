@@ -1,5 +1,5 @@
-import React from "react";
-import { Box } from "grommet";
+import React from 'react';
+import { Box, Heading } from 'grommet';
 
 const AppBar = (props) => {
   return (
@@ -9,11 +9,15 @@ const AppBar = (props) => {
       align="center"
       justify="between"
       background="brand"
-      pad={{ left: "medium", right: "small", vertical: "small" }}
+      pad={{ left: 'medium', right: 'small', vertical: 'small' }}
       elevation="medium"
-      style={{ zIndex: "1" }}
+      style={{ zIndex: '1' }}
       {...props}
-    ></Box>
+    >
+      <Heading level="3" margin="none" color="languid">
+        streamStack
+      </Heading>
+    </Box>
   );
 };
 
