@@ -35,7 +35,7 @@ const MovieCarousel = () => {
     console.log(`what's up you click ${movie.Title}, good choice`);
     setMovieDetails(movie);
   };
-
+  // TODO You need to route to a new details page.
   return (
     <Carousel responsive={responsive}>
       {movies.map((movie) => (
