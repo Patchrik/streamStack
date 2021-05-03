@@ -1,26 +1,27 @@
-import React, { useContext } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import Home from '../pages/Home';
-import { DataProvider } from '../providers/DataProvider';
-import AppBar from './AppBar';
+import React, { useContext } from "react";
+import { Switch, Route } from "react-router-dom";
+import Home from "../pages/Home";
+import Details from "../pages/Details";
+import { DataProvider } from "../providers/DataProvider";
+import AppBar from "./AppBar";
 
 const ApplicationViews = () => {
-  return (
-    <Switch>
-      <Route path="/" exact>
-        <DataProvider>
-          <AppBar />
-          <Home />
-        </DataProvider>
-      </Route>
-      <Route path="/details/:title" exact>
-        <DataProvider>
-          <AppBar />
-          <Home />
-        </DataProvider>
-      </Route>
-    </Switch>
-  );
+	return (
+		<Switch>
+			<Route path="/" exact>
+				<DataProvider>
+					<AppBar />
+					<Home />
+				</DataProvider>
+			</Route>
+			<Route path="/details">
+				<DataProvider>
+					<AppBar />
+					<Details />
+				</DataProvider>
+			</Route>
+		</Switch>
+	);
 };
 
 export default ApplicationViews;
